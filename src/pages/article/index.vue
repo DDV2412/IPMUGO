@@ -520,18 +520,7 @@ export default Vue.extend({
       this.topic = String(this.$route.query.topic)
     }
 
-    const query = this.$route.query.q
-
-    const defaultField = this.$route.query.default_field
-
-    let termQuery: string | undefined
-
-    if (typeof query === 'string') {
-      const queryWithDefaultField = defaultField
-        ? query + `&default_field=${defaultField}`
-        : query
-      termQuery = queryWithDefaultField
-    }
+    const q = localStorage.getItem('query')
 
     await this.getArticle(
       Number(this.$route.query.size),
@@ -550,7 +539,7 @@ export default Vue.extend({
       this.$route.query.author ? String(this.$route.query.author) : undefined,
       this.$route.query.aff ? String(this.$route.query.aff) : undefined,
       this.$route.query.topic ? String(this.$route.query.topic) : undefined,
-      this.$route.query.q ? termQuery : undefined
+      q ? q.slice(2) : undefined
     )
   },
   watch: {
@@ -565,7 +554,7 @@ export default Vue.extend({
       const sort = route.query.sort
       const page = route.query.page
       const search = route.query.query
-      const query = route.query.q
+      const query = localStorage.getItem('query')
       const singleYear = route.query.singleYear
       const rangeYear = route.query.rangeYear
       const publicationName = route.query.publicationName
@@ -582,7 +571,7 @@ export default Vue.extend({
       if (query === undefined) {
         this.query = ''
       } else {
-        this.query = query
+        this.query = String(query)
       }
       if (singleYear === undefined) {
         this.singleYear = ''
@@ -626,7 +615,7 @@ export default Vue.extend({
         author,
         aff,
         topic,
-        query
+        query ? query : undefined
       )
     },
 

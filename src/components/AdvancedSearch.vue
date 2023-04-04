@@ -263,6 +263,8 @@ export default Vue.extend({
         ? `/article?rangeYear=${this.rangeQuery}`
         : '/'
 
+      localStorage.setItem('query', redirect)
+
       this.$router.replace(redirect)
       this.show = false
     },
