@@ -537,7 +537,11 @@ export default Vue.extend({
       this.$route.query.author ? String(this.$route.query.author) : undefined,
       this.$route.query.aff ? String(this.$route.query.aff) : undefined,
       this.$route.query.topic ? String(this.$route.query.topic) : undefined,
-      this.$route.query.q ? String(this.$route.query.q) : undefined
+      this.$route.query.q
+        ? String(this.$route.query.q) + this.$route.query.default_field
+          ? String(this.$route.query.default_field)
+          : ''
+        : undefined
     )
   },
   watch: {
