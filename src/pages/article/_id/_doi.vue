@@ -397,7 +397,7 @@ export default Vue.extend({
   methods: {
     async articleDetail() {
       const data = await this.$axios.get(
-        `/api/article/${this.$route.params.doi}`
+        `/api/article/${this.$route.params.id}/${this.$route.params.doi}`
       )
 
       if (data && data.data && data.data.data) {
@@ -407,7 +407,7 @@ export default Vue.extend({
 
     async viewCount() {
       const data = await this.$axios.post(
-        `/api/set-counter/${this.$route.params.doi}/View`
+        `/api/set-counter/${this.$route.params.id}/${this.$route.params.doi}/View`
       )
     },
 

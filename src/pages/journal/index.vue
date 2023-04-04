@@ -95,7 +95,7 @@
             class="px-4 pt-12 text-center translate-y-8 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
           >
             <nuxt-link
-              :to="'/journal/' + journal.id"
+              :to="'/journal/' + journal.abbreviation"
               class="text-h4 leading-h4 font-semibold line-clamp-2"
             >
               {{ journal.name }}
