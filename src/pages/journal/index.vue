@@ -62,12 +62,10 @@
           </div>
         </div>
       </div>
-      <div
-        v-for="(journal, id) in journals"
-        :key="id"
-        class="grid grid-cols-1 md:grid-cols-3 justify-center gap-4 mt-8"
-      >
+      <div class="grid grid-cols-1 md:grid-cols-3 justify-center gap-4 mt-8">
         <div
+          v-for="(journal, id) in journals"
+          :key="id"
           class="rounded-md pb-8 group hover:-mt-4 h-[23rem] transition-all duration-300 ease-in-out hover:shadow-md overflow-hidden relative cursor-pointer"
         >
           <figure class="h-32 overflow-hidden">
@@ -279,11 +277,11 @@ export default Vue.extend({
 
       await this.getJournal(size, sort, page, search)
     },
-    search(value){
+    search(value) {
       this.$router.push({
         query: { ...this.$route.query, search: value },
       })
-    }
+    },
   },
 })
 </script>
