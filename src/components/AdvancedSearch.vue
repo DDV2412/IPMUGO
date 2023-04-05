@@ -204,10 +204,10 @@ export default Vue.extend({
 
       switch (this.termValue) {
         case '_all':
-          this.searchTerm += this.termQuery + '&default_field=_all'
+          this.searchTerm += this.termQuery + '@default_field=_all'
           break
         case '*_text':
-          this.searchTerm += this.termQuery + '&df=*_text'
+          this.searchTerm += this.termQuery + '@df=*_text'
           break
         case 'title':
           this.searchTerm += 'title:' + this.termQuery
@@ -262,8 +262,6 @@ export default Vue.extend({
         : this.rangeQuery && this.rangeQuery !== '-'
         ? `/article?rangeYear=${this.rangeQuery}`
         : '/'
-
-      localStorage.setItem('query', redirect)
 
       this.$router.replace(redirect)
       this.show = false

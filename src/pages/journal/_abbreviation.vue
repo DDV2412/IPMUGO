@@ -290,26 +290,25 @@
             <h1
               class="text-h1 leading-h1 font-bold text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100"
             >
-              International Journal of Power Electronics and Drive Systems
-              (IJPEDS)
+              {{ journal.name }}
             </h1>
             <p
               class="text-p-18 leading-p-18 mt-4 text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100"
             >
-              ISSN/E_ISSN : 2088-8694/2722-256X
+              ISSN/E_ISSN : {{ journal.issn }}/{{ journal.e_issn }}
             </p>
             <p
               class="text-p-18 leading-p-18 mt-4 text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100"
             >
-              Pubsliher : Institute of Advanced Engineering and Science
+              Pubsliher : {{ journal.publisher }}
             </p>
 
             <div class="mt-8 flex justify-start items-center gap-5">
-              <nuxt-link
-                to="/article"
+              <a
+                :href="journal.journalSite"
                 typeData="button"
                 class="bg-ipmugo-primary-50 overflow-hidden h-12 px-5 rounded-md relative transition-all duration-300 ease-in-out font-medium text-l-16 leading-l-16 flex justify-center items-center text-ipmugo-neutral-90 before:content-[''] before:z-[1] before:absolute before:h-full before:rounded-md before:w-0 hover:before:w-full before:transition-all before:duration-300 before:ease-in-out before:bg-ipmugo-neutral-90 before:ring-2 before:ring-inset before:ring-ipmugo-neutral-80 after:content-['View Journal'] after:justify-center after:items-center after:z-[2] after:absolute after:text-ipmugo-neutral-10 after:w-full after:h-full after:flex after:opacity-0 hover:after:opacity-100 after:transition-all after:duration-300 after:ease-in-out"
-                >View Journal</nuxt-link
+                >View Journal</a
               >
             </div>
           </div>
@@ -325,31 +324,7 @@
         </div>
 
         <div class="py-8">
-          <article class="py-2">
-            The International Journal of Power Electronics and Drive Systems
-            (IJPEDS), p-ISSN: 2088-8694, e-ISSN 2722-256X, is the official
-            publication of the Institute of Advanced Engineering and Science
-            (IAES). This is a SCOPUS and ScimagoJR indexed journal, SJR Q3 on
-            Electrical and Electronics Engineering, CiteScore: 3.3, SJR: 0.346,
-            and SNIP: 0.638. The scope of the journal includes all issues in the
-            field of power electronics, electric drives, and energy systems.
-            Included are techniques for advanced power semiconductor devices;
-            control in power electronics; low and high power converters
-            (inverters, converters, controlled and uncontrolled rectifiers);
-            control algorithms and techniques applied to power electronics;
-            electromagnetic and thermal performance of electronic power
-            converters and inverters; power quality and utility applications;
-            renewable energy; electric machines; modelling, simulation,
-            analysis, design and implementations of the application of power
-            circuit components (power semiconductors, inductors, high frequency
-            transformers, capacitors), EMI/EMC considerations; power devices and
-            components; integrated and packaged; induction motor drives;
-            synchronous motor drives; synchronous motor drives; permanent magnet
-            motor drives; ASDs (adjustable speed drives); multi-phase machines
-            and converters; applications in motor drives; electric vehicles;
-            wind energy systems; solar; battery chargers; UPS; and other
-            applications.
-          </article>
+          <article class="py-2" v-html="journal.description"></article>
         </div>
 
         <!-- Subscribe -->
@@ -372,52 +347,125 @@
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-12"
           >
             <div
-              class="min-w-full h-40 rounded-md ring-1 ring-ipmugo-neutral-90 dark:ring-ipmugo-neutral-20 cursor-pointer flex justify-center items-center relative overflow-hidden"
+              class="min-w-full p-4 h-40 rounded-md ring-1 ring-ipmugo-neutral-90 dark:ring-ipmugo-neutral-20 cursor-pointer flex flex-col justify-center items-start relative overflow-hidden bg-ipmugo-primary-50"
             >
               <p
-                class="text-h1 leading-h1 font-semibold text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100"
-              ></p>
-              <p
-                class="text-ipmugo-neutral-40 font-semibold dark:text-ipmugo-neutral-80"
+                class="text-h1 leading-h1 font-semibold text-ipmugo-neutral-100"
               >
-                Article Counts
+                {{ articleCount }}
               </p>
+              <p class="font-semibold text-ipmugo-neutral-80">Article Counts</p>
+              <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
+                <svg
+                  class="w-full h-full"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14 2.26953V6.40007C14 6.96012 14 7.24015 14.109 7.45406C14.2049 7.64222 14.3578 7.7952 14.546 7.89108C14.7599 8.00007 15.0399 8.00007 15.6 8.00007H19.7305M16 13H8M16 17H8M10 9H8M14 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H15.2C16.8802 22 17.7202 22 18.362 21.673C18.9265 21.3854 19.3854 20.9265 19.673 20.362C20 19.7202 20 18.8802 20 17.2V8L14 2Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
             <div
-              class="min-w-full h-40 rounded-md ring-1 ring-ipmugo-neutral-90 dark:ring-ipmugo-neutral-20 cursor-pointer flex justify-center items-center relative overflow-hidden"
+              class="min-w-full p-4 h-40 rounded-md ring-1 ring-ipmugo-neutral-90 dark:ring-ipmugo-neutral-20 cursor-pointer flex flex-col justify-center items-start relative overflow-hidden bg-ipmugo-primary-50"
             >
               <p
-                class="text-h1 leading-h1 font-semibold text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100"
-              ></p>
-              <p
-                class="text-ipmugo-neutral-40 font-semibold dark:text-ipmugo-neutral-80"
+                class="text-h1 leading-h1 font-semibold text-ipmugo-neutral-100"
               >
-                Article Counts
+                {{ authorCount }}
               </p>
+              <p class="font-semibold text-ipmugo-neutral-80">Author Counts</p>
+              <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
+                <svg
+                  class="w-full h-full"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16 3.46776C17.4817 4.20411 18.5 5.73314 18.5 7.5C18.5 9.26686 17.4817 10.7959 16 11.5322M18 16.7664C19.5115 17.4503 20.8725 18.565 22 20M2 20C3.94649 17.5226 6.58918 16 9.5 16C12.4108 16 15.0535 17.5226 17 20M14 7.5C14 9.98528 11.9853 12 9.5 12C7.01472 12 5 9.98528 5 7.5C5 5.01472 7.01472 3 9.5 3C11.9853 3 14 5.01472 14 7.5Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
             <div
-              class="min-w-full h-40 rounded-md ring-1 ring-ipmugo-neutral-90 dark:ring-ipmugo-neutral-20 cursor-pointer flex justify-center items-center relative overflow-hidden"
+              class="min-w-full p-4 h-40 rounded-md ring-1 ring-ipmugo-neutral-90 dark:ring-ipmugo-neutral-20 cursor-pointer flex flex-col justify-center items-start relative overflow-hidden bg-ipmugo-primary-50"
             >
               <p
-                class="text-h1 leading-h1 font-semibold text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100"
-              ></p>
-              <p
-                class="text-ipmugo-neutral-40 font-semibold dark:text-ipmugo-neutral-80"
+                class="text-h1 leading-h1 font-semibold text-ipmugo-neutral-100"
               >
-                Article Counts
+                {{ viewCount }}
               </p>
+              <p class="font-semibold text-ipmugo-neutral-80">View Counts</p>
+              <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
+                <svg
+                  class="w-full h-full"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.42012 12.7132C2.28394 12.4975 2.21584 12.3897 2.17772 12.2234C2.14909 12.0985 2.14909 11.9015 2.17772 11.7766C2.21584 11.6103 2.28394 11.5025 2.42012 11.2868C3.54553 9.50484 6.8954 5 12.0004 5C17.1054 5 20.4553 9.50484 21.5807 11.2868C21.7169 11.5025 21.785 11.6103 21.8231 11.7766C21.8517 11.9015 21.8517 12.0985 21.8231 12.2234C21.785 12.3897 21.7169 12.4975 21.5807 12.7132C20.4553 14.4952 17.1054 19 12.0004 19C6.8954 19 3.54553 14.4952 2.42012 12.7132Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M12.0004 15C13.6573 15 15.0004 13.6569 15.0004 12C15.0004 10.3431 13.6573 9 12.0004 9C10.3435 9 9.0004 10.3431 9.0004 12C9.0004 13.6569 10.3435 15 12.0004 15Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
             <div
-              class="min-w-full h-40 rounded-md ring-1 ring-ipmugo-neutral-90 dark:ring-ipmugo-neutral-20 cursor-pointer flex justify-center items-center relative overflow-hidden"
+              class="min-w-full p-4 h-40 rounded-md ring-1 ring-ipmugo-neutral-90 dark:ring-ipmugo-neutral-20 cursor-pointer flex flex-col justify-center items-start relative overflow-hidden bg-ipmugo-primary-50"
             >
               <p
-                class="text-h1 leading-h1 font-semibold text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100"
-              ></p>
-              <p
-                class="text-ipmugo-neutral-40 font-semibold dark:text-ipmugo-neutral-80"
+                class="text-h1 leading-h1 font-semibold text-ipmugo-neutral-100"
               >
-                Article Counts
+                {{ downloadCount }}
               </p>
+              <p class="font-semibold text-ipmugo-neutral-80">
+                Download Counts
+              </p>
+              <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
+                <svg
+                  class="w-full h-full"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 16.2422C2.79401 15.435 2 14.0602 2 12.5C2 10.1564 3.79151 8.23129 6.07974 8.01937C6.54781 5.17213 9.02024 3 12 3C14.9798 3 17.4522 5.17213 17.9203 8.01937C20.2085 8.23129 22 10.1564 22 12.5C22 14.0602 21.206 15.435 20 16.2422M8 17L12 21M12 21L16 17M12 21V12"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
           <p
@@ -471,6 +519,11 @@ export default Vue.extend({
     error: '',
     success: '',
     loading: false,
+    journal: {} as any,
+    articleCount: 0,
+    authorCount: 0,
+    viewCount: 0,
+    downloadCount: 0,
   }),
   methods: {
     async subscribeHandler() {
@@ -491,6 +544,50 @@ export default Vue.extend({
         this.loading = false
       }
     },
+    async journalDetail() {
+      const data = await this.$axios.get(
+        `/api/journal/${this.$route.params.abbreviation}`
+      )
+
+      if (data && data.data && data.data.data) {
+        this.journal = data.data.data
+      }
+    },
+    async statisticData() {
+      const data = await this.$axios.get('/api/article/statistic')
+
+      if (data && data.data && data.data.data) {
+        if (data.data.data.articleCount) {
+          this.articleCount = data.data.data.articleCount
+        }
+        if (data.data.data.authorCount) {
+          this.authorCount = data.data.data.authorCount
+        }
+      }
+    },
+    async viewData() {
+      const data = await this.$axios.get('/api/set-counter/View')
+
+      if (data && data.data && data.data.data) {
+        this.viewCount = data.data.data
+      }
+    },
+    async downloadData() {
+      const data = await this.$axios.get('/api/set-counter/Download')
+
+      if (data && data.data && data.data.data) {
+        this.downloadCount = data.data.data
+      }
+    },
+  },
+  async mounted() {
+    await this.journalDetail()
+
+    await this.statisticData()
+
+    await this.viewData()
+
+    await this.downloadData()
   },
 })
 </script>

@@ -513,15 +513,6 @@ export default Vue.extend({
       this.aff = String(this.$route.query.aff)
     }
 
-    if (
-      typeof this.$route.query.topic !== 'undefined' &&
-      this.$route.query.topic !== null
-    ) {
-      this.topic = String(this.$route.query.topic)
-    }
-
-    const q = localStorage.getItem('query')
-
     await this.getArticle(
       Number(this.$route.query.size),
       this.$route.query.sort ? String(this.$route.query.sort) : undefined,
@@ -539,7 +530,9 @@ export default Vue.extend({
       this.$route.query.author ? String(this.$route.query.author) : undefined,
       this.$route.query.aff ? String(this.$route.query.aff) : undefined,
       this.$route.query.topic ? String(this.$route.query.topic) : undefined,
-      q ? q.slice(2) : undefined
+      this.$route.query.q
+        ? String(this.$route.query.q).replaceAll('@', '&')
+        : undefined
     )
   },
   watch: {
@@ -554,7 +547,7 @@ export default Vue.extend({
       const sort = route.query.sort
       const page = route.query.page
       const search = route.query.query
-      const query = localStorage.getItem('query')
+      const query = route.query.q
       const singleYear = route.query.singleYear
       const rangeYear = route.query.rangeYear
       const publicationName = route.query.publicationName
@@ -566,6 +559,12 @@ export default Vue.extend({
         this.search = ''
       } else {
         this.search = search
+      }
+
+      if (query === undefined) {
+        this.query = ''
+      } else {
+        this.query = String(query)
       }
 
       if (query === undefined) {
@@ -615,7 +614,7 @@ export default Vue.extend({
         author,
         aff,
         topic,
-        query ? query : undefined
+        query
       )
     },
 

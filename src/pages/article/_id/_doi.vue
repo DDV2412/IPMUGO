@@ -96,8 +96,8 @@
         </div>
         <div class="flex-1 min-h-full min-w-[25rem]">
           <div>
-            <nuxt-link
-              :to="`http://scholar.google.com/scholar?hl=en&lr=&cites=http://dx.doi.org/${article.doi}`"
+            <a
+              :href="`http://scholar.google.com/scholar?hl=en&lr=&cites=http://dx.doi.org/${article.doi}`"
               class="w-full overflow-hidden relative h-[10rem] bg-ipmugo-primary-50 rounded-md text-ipmugo-neutral-100 flex justify-start items-end p-4 cursor-pointer"
             >
               <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
@@ -121,7 +121,7 @@
               <p class="text-p-18 leading-p-18">
                 Search for Citations in <br />Google Scholar
               </p>
-            </nuxt-link>
+            </a>
           </div>
           <div class="my-4">
             <div
