@@ -334,7 +334,9 @@
             class="grid grid-cols-1 md:grid-cols-3 justify-center gap-4 mt-8"
           >
             <div
-              class="rounded-md pb-8 group hover:-mt-4 h-[21rem] transition-all duration-300 ease-in-out hover:shadow-md overflow-hidden relative cursor-pointer"
+              v-for="(author, id) in authors"
+              :key="id"
+              class="rounded-md pb-8 group hover:-mt-4 h-[20rem] transition-all duration-300 ease-in-out hover:shadow-md overflow-hidden relative cursor-pointer"
             >
               <figure class="h-32 overflow-hidden">
                 <img
@@ -350,8 +352,8 @@
                   class="absolute -bottom-10 w-40 h-40 bg-ipmugo-neutral-100 dark:bg-ipmugo-neutral-10 rounded-full p-3"
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=800"
-                    alt=""
+                    :src="author.profile"
+                    :alt="author.firstName + ' ' + author.lastName"
                     class="w-full h-full object-cover rounded-full"
                   />
                 </div>
@@ -361,158 +363,35 @@
                 class="px-4 pt-12 text-center translate-y-8 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
               >
                 <nuxt-link
-                  to="/"
+                  :to="author.id"
                   class="text-h4 leading-h4 font-semibold line-clamp-2"
                 >
-                  Marianne Shane
+                  {{ author.firstName + ' ' + author.lastName }}
                 </nuxt-link>
-                <p class="text-p-14 mt-3 leading-p-14 line-clamp-2">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
+                <p
+                  v-if="author.affiliation"
+                  class="text-p-14 mt-3 leading-p-14"
+                >
+                  {{ author.affiliation }}
                 </p>
               </div>
               <div
                 class="flex translate-y-20 group-hover:translate-y-0 mt-4 justify-center items-center gap-4 transition-all duration-300 ease-linear"
               >
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
+                <div class="w-8 h-8 rounded-full overflow-hidden">
+                  <a :href="author.scopusId">
                     <img src="/images/scopus.png" alt="" class="w-full" />
-                  </nuxt-link>
+                  </a>
                 </div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
+                <div class="w-8 h-8 rounded-full overflow-hidden">
+                  <a :href="author.googleScholar">
                     <img src="/images/scholar.png" alt="" class="w-full" />
-                  </nuxt-link>
+                  </a>
                 </div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
+                <div class="w-8 h-8 rounded-full overflow-hidden">
+                  <a :href="author.orcid">
                     <img src="/images/orcid.png" alt="" class="w-full" />
-                  </nuxt-link>
-                </div>
-              </div>
-            </div>
-            <div
-              class="rounded-md pb-8 group hover:-mt-4 h-[21rem] transition-all duration-300 ease-in-out hover:shadow-md overflow-hidden relative cursor-pointer"
-            >
-              <figure class="h-32 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1592659762303-90081d34b277?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80"
-                  alt=""
-                  class="h-full w-full object-cover rounded-md"
-                />
-              </figure>
-              <figure
-                class="absolute z-20 w-full h-32 top-0 left-0 flex justify-center translate-y-8 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
-              >
-                <div
-                  class="absolute -bottom-10 w-40 h-40 bg-ipmugo-neutral-100 dark:bg-ipmugo-neutral-10 rounded-full p-3"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=800"
-                    alt=""
-                    class="w-full h-full object-cover rounded-full"
-                  />
-                </div>
-              </figure>
-
-              <div
-                class="px-4 pt-12 text-center translate-y-8 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
-              >
-                <nuxt-link
-                  to="/"
-                  class="text-h4 leading-h4 font-semibold line-clamp-2"
-                >
-                  Marianne Shane
-                </nuxt-link>
-                <p class="text-p-14 mt-3 leading-p-14 line-clamp-2">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </p>
-              </div>
-              <div
-                class="flex translate-y-20 group-hover:translate-y-0 mt-4 justify-center items-center gap-4 transition-all duration-300 ease-linear"
-              >
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
-                    <img src="/images/scopus.png" alt="" class="w-full" />
-                  </nuxt-link>
-                </div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
-                    <img src="/images/scholar.png" alt="" class="w-full" />
-                  </nuxt-link>
-                </div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
-                    <img src="/images/orcid.png" alt="" class="w-full" />
-                  </nuxt-link>
-                </div>
-              </div>
-            </div>
-            <div
-              class="rounded-md pb-8 group hover:-mt-4 h-[21rem] transition-all duration-300 ease-in-out hover:shadow-md overflow-hidden relative cursor-pointer"
-            >
-              <figure class="h-32 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1592659762303-90081d34b277?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80"
-                  alt=""
-                  class="h-full w-full object-cover rounded-md"
-                />
-              </figure>
-              <figure
-                class="absolute z-20 w-full h-32 top-0 left-0 flex justify-center translate-y-8 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
-              >
-                <div
-                  class="absolute -bottom-10 w-40 h-40 bg-ipmugo-neutral-100 dark:bg-ipmugo-neutral-10 rounded-full p-3"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=800"
-                    alt=""
-                    class="w-full h-full object-cover rounded-full"
-                  />
-                </div>
-              </figure>
-
-              <div
-                class="px-4 pt-12 text-center translate-y-8 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
-              >
-                <nuxt-link
-                  to="/"
-                  class="text-h4 leading-h4 font-semibold line-clamp-2"
-                >
-                  Marianne Shane
-                </nuxt-link>
-                <p class="text-p-14 mt-3 leading-p-14 line-clamp-2">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </p>
-              </div>
-              <div
-                class="flex translate-y-20 group-hover:translate-y-0 mt-4 justify-center items-center gap-4 transition-all duration-300 ease-linear"
-              >
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
-                    <img src="/images/scopus.png" alt="" class="w-full" />
-                  </nuxt-link>
-                </div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
-                    <img src="/images/scholar.png" alt="" class="w-full" />
-                  </nuxt-link>
-                </div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <nuxt-link to="">
-                    <img src="/images/orcid.png" alt="" class="w-full" />
-                  </nuxt-link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -919,6 +798,7 @@ export default Vue.extend({
     authorCount: 0,
     viewCount: 0,
     downloadCount: 0,
+    authors: [] as any,
   }),
   methods: {
     async subscribeHandler() {
@@ -947,6 +827,22 @@ export default Vue.extend({
 
         if (data && data.data && data.data.data) {
           this.articles = data.data.data
+        }
+      } catch (error) {
+        this.error =
+          'Please try again later or contact customer support for assistance.'
+      } finally {
+        this.loading = false
+      }
+    },
+
+    async featuredAuthor() {
+      this.loading = true
+      try {
+        const data = await this.$axios.get('/api/author/featured-authors')
+
+        if (data && data.data && data.data.data) {
+          this.authors = data.data.data
         }
       } catch (error) {
         this.error =
@@ -985,6 +881,8 @@ export default Vue.extend({
   },
   async mounted() {
     await this.featuredArticle()
+
+    await this.featuredAuthor()
 
     await this.statisticData()
 

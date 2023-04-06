@@ -587,12 +587,12 @@ export default Vue.extend({
   name: 'FilterComponent',
   data: () => ({
     accordion: {
-      year: false,
-      range: false,
-      publicationTitle: false,
-      author: false,
-      affiliation: false,
-      publicationTopic: false,
+      year: true,
+      range: true,
+      publicationTitle: true,
+      author: true,
+      affiliation: true,
+      publicationTopic: true,
     },
     filterByYear: '',
     rangeValue: {

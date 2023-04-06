@@ -10,6 +10,11 @@
           Result {{ totalHits }} Article
         </h5>
         <div class="flex justify-end items-center gap-4 flex-wrap">
+          <div
+            class="relative flex justify-center items-center gap-x-3 h-12 px-4 ring-2 focus:ring-inset border-none focus:ring-ipmugo-primary-70 dark:focus:ring-ipmugo-primary-30 focus:ring-2 ring-inset ring-ipmugo-primary-90 dark:ring-ipmugo-primary-20 rounded-md outline-none text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100 bg-ipmugo-neutral-100 dark:bg-ipmugo-neutral-10 text-l-16 leading-l-16 font-normal"
+          >
+            Export Cite
+          </div>
           <div class="relative">
             <input
               class="min-w-full h-12 pl-4 pr-10 ring-2 focus:ring-inset border-none focus:ring-ipmugo-primary-70 dark:focus:ring-ipmugo-primary-30 focus:ring-2 ring-inset ring-ipmugo-primary-90 dark:ring-ipmugo-primary-20 rounded-md outline-none text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100 bg-ipmugo-neutral-100 dark:bg-ipmugo-neutral-10 text-l-16 leading-l-16 font-normal"
@@ -36,7 +41,6 @@
               </svg>
             </button>
           </div>
-
           <div class="flex justify-start items-center gap-x-4">
             <p class="font-medium">Sort By</p>
             <select

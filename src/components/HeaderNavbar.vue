@@ -168,18 +168,7 @@
                 </nuxt-link>
               </div>
               <div v-for="(group, index) in journals" :key="index">
-                <div
-                  v-for="(journal, idx) in group"
-                  :key="idx"
-                  class="py-2 flex justify-start items-center gap-4"
-                >
-                  <figure class="w-16 overflow-hidden rounded-md flex-auto">
-                    <img
-                      :src="journal.coverImage"
-                      :alt="journal.name"
-                      class="w-full object-cover"
-                    />
-                  </figure>
+                <div v-for="(journal, idx) in group" :key="idx" class="py-2">
                   <nuxt-link :to="'/journal/' + journal.id">
                     <span
                       class="text-l-14 leading-l-14 font-light line-clamp-2 hover:text-ipmugo-primary-50"

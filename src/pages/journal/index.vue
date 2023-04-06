@@ -109,7 +109,7 @@
             <div
               class="w-10 h-10 bg-ipmugo-neutral-50 flex justify-center items-center px-4 text-l-16 leading-l-16 font-medium text-ipmugo-neutral-100 rounded-md overflow-hidden"
             >
-              <nuxt-link to="journal.journalSite">
+              <a :href="journal.journalSite">
                 <svg
                   width="24"
                   height="24"
@@ -125,7 +125,7 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-              </nuxt-link>
+              </a>
             </div>
             <div
               class="w-10 h-10 bg-ipmugo-primary-50 flex justify-center items-center px-4 text-l-16 leading-l-16 font-medium text-ipmugo-neutral-100 rounded-md overflow-hidden"
