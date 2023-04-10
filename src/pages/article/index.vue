@@ -10,11 +10,13 @@
           Result {{ totalHits }} Article
         </h5>
         <div class="flex justify-end items-center gap-4 flex-wrap">
-          <div
-            class="relative flex justify-center items-center gap-x-3 h-12 px-4 ring-2 focus:ring-inset border-none focus:ring-ipmugo-primary-70 dark:focus:ring-ipmugo-primary-30 focus:ring-2 ring-inset ring-ipmugo-primary-90 dark:ring-ipmugo-primary-20 rounded-md outline-none text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100 bg-ipmugo-neutral-100 dark:bg-ipmugo-neutral-10 text-l-16 leading-l-16 font-normal"
+          <button
+            @click="exportCitation"
+            class="flex justify-center items-center gap-x-3 h-12 px-4 ring-2 focus:ring-inset border-none focus:ring-ipmugo-primary-70 dark:focus:ring-ipmugo-primary-30 focus:ring-2 ring-inset ring-ipmugo-primary-90 dark:ring-ipmugo-primary-20 rounded-md outline-none text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100 bg-ipmugo-neutral-100 dark:bg-ipmugo-neutral-10 text-l-16 leading-l-16 font-normal"
           >
-            Export Cite
-          </div>
+            Export
+          </button>
+
           <div class="relative">
             <input
               class="min-w-full h-12 pl-4 pr-10 ring-2 focus:ring-inset border-none focus:ring-ipmugo-primary-70 dark:focus:ring-ipmugo-primary-30 focus:ring-2 ring-inset ring-ipmugo-primary-90 dark:ring-ipmugo-primary-20 rounded-md outline-none text-ipmugo-neutral-10 dark:text-ipmugo-neutral-100 bg-ipmugo-neutral-100 dark:bg-ipmugo-neutral-10 text-l-16 leading-l-16 font-normal"
@@ -452,6 +454,21 @@ export default Vue.extend({
       const query = { ...this.$route.query }
       delete query[option]
       this.$router.replace({ query })
+    },
+    async exportCitation() {
+      const data = await this.$axios.get(
+        `/api/article/citation/export?count=200`
+      )
+
+      if (data && data.data) {
+        const downloadLink = document.createElement('a')
+        downloadLink.href =
+          'data:text/csv;charset=utf-8,' + encodeURIComponent(data.data)
+        downloadLink.download = 'citation.bib'
+        document.body.appendChild(downloadLink)
+        downloadLink.click()
+        document.body.removeChild(downloadLink)
+      }
     },
   },
   async mounted() {

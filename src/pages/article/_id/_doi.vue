@@ -118,35 +118,74 @@
                   />
                 </svg>
               </div>
-              <p class="text-p-18 leading-p-18">
+              <p class="text-p-14 leading-p-14">
                 Search for Citations in <br />Google Scholar
               </p>
             </a>
           </div>
-          <div class="my-4">
-            <div
-              class="w-full overflow-hidden relative h-[10rem] bg-ipmugo-secondary-50 rounded-md text-ipmugo-neutral-100 flex justify-end items-start p-4 cursor-pointer flex-col"
-            >
-              <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
-                <svg
-                  class="w-full h-full"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4 16.2422C2.79401 15.435 2 14.0602 2 12.5C2 10.1564 3.79151 8.23129 6.07974 8.01937C6.54781 5.17213 9.02024 3 12 3C14.9798 3 17.4522 5.17213 17.9203 8.01937C20.2085 8.23129 22 10.1564 22 12.5C22 14.0602 21.206 15.435 20 16.2422M8 17L12 21M12 21L16 17M12 21V12"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+          <div class="flex flex-col lg:flex-row justify-start gap-2 flex-wrap">
+            <div class="my-4 flex-1">
+              <div
+                class="w-full overflow-hidden relative h-[10rem] bg-ipmugo-secondary-50 rounded-md text-ipmugo-neutral-100 flex justify-end items-start p-4 cursor-pointer flex-col"
+              >
+                <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
+                  <svg
+                    class="w-full h-full"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2.42012 12.7132C2.28394 12.4975 2.21584 12.3897 2.17772 12.2234C2.14909 12.0985 2.14909 11.9015 2.17772 11.7766C2.21584 11.6103 2.28394 11.5025 2.42012 11.2868C3.54553 9.50484 6.8954 5 12.0004 5C17.1054 5 20.4553 9.50484 21.5807 11.2868C21.7169 11.5025 21.785 11.6103 21.8231 11.7766C21.8517 11.9015 21.8517 12.0985 21.8231 12.2234C21.785 12.3897 21.7169 12.4975 21.5807 12.7132C20.4553 14.4952 17.1054 19 12.0004 19C6.8954 19 3.54553 14.4952 2.42012 12.7132Z"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12.0004 15C13.6573 15 15.0004 13.6569 15.0004 12C15.0004 10.3431 13.6573 9 12.0004 9C10.3435 9 9.0004 10.3431 9.0004 12C9.0004 13.6569 10.3435 15 12.0004 15Z"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <h2 class="text-h2 leading-h2 font-bold">
+                  {{ article.viewsCount }}
+                </h2>
+                <p class="text-p-14 leading-p-14">Article Views</p>
               </div>
-              <h2 class="text-h2 leading-h2 font-bold">500</h2>
-              <p class="text-p-18 leading-p-18">Total Article Views</p>
+            </div>
+            <div class="my-4 flex-1">
+              <div
+                class="w-full overflow-hidden relative h-[10rem] bg-ipmugo-secondary-50 rounded-md text-ipmugo-neutral-100 flex justify-end items-start p-4 cursor-pointer flex-col"
+              >
+                <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
+                  <svg
+                    class="w-full h-full"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 16.2422C2.79401 15.435 2 14.0602 2 12.5C2 10.1564 3.79151 8.23129 6.07974 8.01937C6.54781 5.17213 9.02024 3 12 3C14.9798 3 17.4522 5.17213 17.9203 8.01937C20.2085 8.23129 22 10.1564 22 12.5C22 14.0602 21.206 15.435 20 16.2422M8 17L12 21M12 21L16 17M12 21V12"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <h2 class="text-h2 leading-h2 font-bold">
+                  {{ article.downloadCount }}
+                </h2>
+                <p class="text-p-14 leading-p-14">Article Downloads</p>
+              </div>
             </div>
           </div>
           <div
@@ -174,19 +213,30 @@
             <div
               class="mt-2 py-2 bg-ipmugo-neutral-90 dark:bg-ipmugo-neutral-20 flex justify-start items-center"
             >
-              <button class="px-4 h-full text-l-14 leading-l-14 font-semibold">
+              <button
+                @click="optionCite('plainTex')"
+                class="px-4 h-full text-l-14 leading-l-14 font-semibold"
+              >
                 Plain Text
               </button>
-              <button class="px-4 h-full text-l-14 leading-l-14 font-semibold">
+              <button
+                @click="optionCite('bib')"
+                class="px-4 h-full text-l-14 leading-l-14 font-semibold"
+              >
                 BibTeX
               </button>
             </div>
-            <p class="mt-2 shadow-inner p-4 rounded-md text-l-14 leading-l-14">
-              "IEEE Standard for Environmental Assessment of Personal Computer
-              Products, Including Notebook Personal Computers, Desktop Personal
-              Computers, and Personal Computer Displays," in IEEE Std
-              1680.1-2009 , vol., no., pp.1-43, 5 March 2010, doi:
-              10.1109/IEEESTD.2010.8319900.
+            <p
+              v-if="plainTex"
+              class="mt-2 shadow-inner p-4 rounded-md text-l-14 leading-l-14"
+            >
+              {{ plainText }}
+            </p>
+            <p
+              v-if="bib"
+              class="mt-2 shadow-inner p-4 rounded-md text-l-14 leading-l-14"
+            >
+              {{ bibtex }}
             </p>
             <button
               title="Clipboard Citation"
@@ -318,6 +368,26 @@
         </svg>
       </button>
       <button
+        @click="exportCitation"
+        class="p-2 rounded-md text-ipmugo-neutral-100 hover:text-ipmugo-neutral-10"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 16.2422C2.79401 15.435 2 14.0602 2 12.5C2 10.1564 3.79151 8.23129 6.07974 8.01937C6.54781 5.17213 9.02024 3 12 3C14.9798 3 17.4522 5.17213 17.9203 8.01937C20.2085 8.23129 22 10.1564 22 12.5C22 14.0602 21.206 15.435 20 16.2422M8 17L12 21M12 21L16 17M12 21V12"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button
         class="p-2 rounded-md text-ipmugo-neutral-100 hover:text-ipmugo-neutral-10"
       >
         <svg
@@ -350,6 +420,7 @@
           />
         </svg>
       </button>
+
       <div
         class="absolute cursor-pointer group-hover:-translate-x-20 transition-all duration-300 ease-in-out bg-ipmugo-secondary-50 p-2 rounded-md -right-8 bottom-0 text-ipmugo-neutral-100"
       >
@@ -393,6 +464,14 @@ export default Vue.extend({
   data: () => ({
     article: {} as any,
     related: [] as any,
+    bibtex: '',
+    plainText: `IEEE Standard for Environmental Assessment of Personal Computer
+              Products, Including Notebook Personal Computers, Desktop Personal
+              Computers, and Personal Computer Displays," in IEEE Std
+              1680.1-2009 , vol., no., pp.1-43, 5 March 2010, doi:
+              10.1109/IEEESTD.2010.8319900.`,
+    plainTex: true,
+    bib: false,
   }),
   methods: {
     async articleDetail() {
@@ -402,6 +481,16 @@ export default Vue.extend({
 
       if (data && data.data && data.data.data) {
         this.article = data.data.data
+      }
+    },
+
+    optionCite(option: String) {
+      if (option === 'bib') {
+        this.bib = true
+        this.plainTex = false
+      } else {
+        this.bib = false
+        this.plainTex = true
       }
     },
 
@@ -428,6 +517,35 @@ export default Vue.extend({
         this.related = data.data.data.content
       }
     },
+
+    async exportCitation() {
+      const data = await this.$axios.get(
+        `/api/article/export-citation/${this.article.id}`
+      )
+
+      if (data && data.data) {
+        await this.$axios.post(
+          `/api/set-counter/${this.$route.params.id}/${this.$route.params.doi}/Download`
+        )
+
+        const downloadLink = document.createElement('a')
+        downloadLink.href =
+          'data:text/csv;charset=utf-8,' + encodeURIComponent(data.data)
+        downloadLink.download = 'citation.bib'
+        document.body.appendChild(downloadLink)
+        downloadLink.click()
+        document.body.removeChild(downloadLink)
+      }
+    },
+
+    async getBibText() {
+      const data = await this.$axios.get(
+        `/api/article/export-citation/${this.article.id}`
+      )
+      if (data && data.data) {
+        this.bibtex = data.data
+      }
+    },
   },
   async mounted() {
     await this.articleDetail()
@@ -435,6 +553,8 @@ export default Vue.extend({
     await this.relatedArticle()
 
     await this.viewCount()
+
+    await this.getBibText()
   },
 })
 </script>
