@@ -161,7 +161,7 @@
             </div>
             <div class="my-4 flex-1">
               <div
-                class="w-full overflow-hidden relative h-[10rem] bg-ipmugo-secondary-50 rounded-md text-ipmugo-neutral-100 flex justify-end items-start p-4 cursor-pointer flex-col"
+                class="w-full overflow-hidden relative h-[10rem] bg-ipmugo-danger-50 rounded-md text-ipmugo-neutral-100 flex justify-end items-start p-4 cursor-pointer flex-col"
               >
                 <div class="absolute h-full right-0 text-ipmugo-neutral-90/30">
                   <svg

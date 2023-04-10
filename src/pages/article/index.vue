@@ -281,7 +281,7 @@
           class="rounded-md hover:shadow-md h-full overflow-hidden cursor-pointer transition-all ease-in-out duration-300 hover:-mt-4"
         >
           <figure class="h-56 overflow-hidden relative">
-            <nuxt-link to="/">
+            <nuxt-link :to="'article/' + article.sourceAsMap.doi">
               <img
                 src="https://images.unsplash.com/photo-1592659762303-90081d34b277?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80"
                 alt=""
