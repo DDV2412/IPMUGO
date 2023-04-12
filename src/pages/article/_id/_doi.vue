@@ -227,18 +227,21 @@
               </button>
             </div>
             <p
+              id="citation"
               v-if="plainTex"
               class="mt-2 shadow-inner p-4 rounded-md text-l-14 leading-l-14"
             >
               {{ plainText }}
             </p>
             <p
+              id="citation"
               v-if="bib"
               class="mt-2 shadow-inner p-4 rounded-md text-l-14 leading-l-14"
             >
               {{ bibtex }}
             </p>
             <button
+              @click="copyClipboard"
               title="Clipboard Citation"
               class="bg-ipmugo-neutral-90 dark:bg-ipmugo-neutral-20 p-1 rounded-md flex justify-center items-center absolute right-0 bottom-1"
             >
@@ -460,6 +463,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
 export default Vue.extend({
   data: () => ({
     article: {} as any,
@@ -481,6 +485,21 @@ export default Vue.extend({
 
       if (data && data.data && data.data.data) {
         this.article = data.data.data
+      }
+    },
+
+    copyClipboard() {
+      const clipboard = document.getElementById('citation')
+
+      if (clipboard && navigator.clipboard) {
+        navigator.clipboard
+          .writeText(clipboard.innerText)
+          .then(() => {
+            alert('Text copied to clipboard')
+          })
+          .catch((error) => {
+            alert('Failed to copy text')
+          })
       }
     },
 
