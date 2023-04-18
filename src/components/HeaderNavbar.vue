@@ -108,7 +108,7 @@
               </div>
               <div v-for="(group, index) in articles" :key="index">
                 <div v-for="(article, idx) in group" :key="idx" class="py-2">
-                  <nuxt-link :to="'/article/' + article.id">
+                  <nuxt-link :to="'/article/' + article.sourceAsMap.doi">
                     <span
                       class="text-l-14 leading-l-14 font-light line-clamp-1 hover:text-ipmugo-primary-50"
                       >{{ article.sourceAsMap.title }}</span
