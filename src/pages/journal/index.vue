@@ -151,7 +151,9 @@
             <div
               class="w-max bg-ipmugo-secondary-50 flex justify-center items-center px-4 text-l-16 leading-l-16 font-medium text-ipmugo-neutral-100 h-10 rounded-md overflow-hidden"
             >
-              <nuxt-link :to="'/journal/' + journal.id"> Read More </nuxt-link>
+              <nuxt-link :to="'/journal/' + journal.abbreviation">
+                Read More
+              </nuxt-link>
             </div>
           </div>
         </div>
