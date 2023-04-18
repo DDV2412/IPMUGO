@@ -270,7 +270,10 @@
               :key="id"
               class="mt-2 rounded-md h-full overflow-hidden bg-ipmugo-neutral-90 dark:bg-ipmugo-neutral-20"
             >
-              <div class="p-4">
+              <div
+                class="p-4"
+                v-if="$route.params.id+ '/' + $route.params.doi !== article.sourceAsMap.doi"
+              >
                 <p
                   class="mb-2 text-l-14 leading-l-14 text-ipmugo-neutral-30 dark:text-ipmugo-neutral-70"
                 >
@@ -285,12 +288,7 @@
                   }}
                 </p>
                 <nuxt-link
-                  :to="{
-                    name: 'article',
-                    params: {
-                      id: article.sourceAsMap.doi,
-                    },
-                  }"
+                  :to="'/article/' + article.sourceAsMap.doi"
                   class="text-h4 leading-h4 font-semibold line-clamp-2"
                 >
                   {{ article.sourceAsMap.title }}
