@@ -241,7 +241,7 @@
               {{ bibtex }}
             </p>
             <button
-              @click="copyClipboard()"
+              @click="copyClipboard"
               title="Clipboard Citation"
               class="bg-ipmugo-neutral-90 dark:bg-ipmugo-neutral-20 p-1 rounded-md flex justify-center items-center absolute right-0 bottom-1"
             >
@@ -285,7 +285,12 @@
                   }}
                 </p>
                 <nuxt-link
-                  :to="'article/' + article.sourceAsMap.doi"
+                  :to="{
+                    name: 'article',
+                    params: {
+                      id: article.sourceAsMap.doi,
+                    },
+                  }"
                   class="text-h4 leading-h4 font-semibold line-clamp-2"
                 >
                   {{ article.sourceAsMap.title }}
