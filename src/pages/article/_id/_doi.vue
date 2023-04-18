@@ -226,24 +226,24 @@
                 BibTeX
               </button>
             </div>
-            <p
+            <div
               id="citation"
               v-if="plainTex"
               class="mt-2 shadow-inner p-4 rounded-md text-l-14 leading-l-14"
             >
-              {{ plainText }}
-            </p>
-            <p
+              <pre class="w-full whitespace-pre-line">{{ plainText }}</pre>
+            </div>
+            <div
               id="citation"
               v-if="bib"
               class="mt-2 shadow-inner p-4 rounded-md text-l-14 leading-l-14"
             >
-              {{ bibtex }}
-            </p>
+              <pre class="w-full whitespace-pre-line">{{ bibtex }}</pre>
+            </div>
             <button
               @click="copyClipboard"
               title="Clipboard Citation"
-              class="bg-ipmugo-neutral-90 dark:bg-ipmugo-neutral-20 p-1 rounded-md flex justify-center items-center absolute right-0 bottom-1"
+              class="bg-ipmugo-neutral-90 dark:bg-ipmugo-neutral-20 p-1 rounded-md flex justify-center items-center absolute z-50 right-0 bottom-1"
             >
               <svg
                 width="24"
@@ -272,7 +272,10 @@
             >
               <div
                 class="p-4"
-                v-if="$route.params.id+ '/' + $route.params.doi !== article.sourceAsMap.doi"
+                v-if="
+                  $route.params.id + '/' + $route.params.doi !==
+                  article.sourceAsMap.doi
+                "
               >
                 <p
                   class="mb-2 text-l-14 leading-l-14 text-ipmugo-neutral-30 dark:text-ipmugo-neutral-70"
@@ -477,8 +480,8 @@ export default Vue.extend({
               Computers, and Personal Computer Displays," in IEEE Std
               1680.1-2009 , vol., no., pp.1-43, 5 March 2010, doi:
               10.1109/IEEESTD.2010.8319900.`,
-    plainTex: true,
-    bib: false,
+    plainTex: false,
+    bib: true,
   }),
   methods: {
     async articleDetail() {
