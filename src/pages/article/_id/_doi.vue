@@ -241,7 +241,7 @@
               {{ bibtex }}
             </p>
             <button
-              @click="copyClipboard"
+              @click="copyClipboard()"
               title="Clipboard Citation"
               class="bg-ipmugo-neutral-90 dark:bg-ipmugo-neutral-20 p-1 rounded-md flex justify-center items-center absolute right-0 bottom-1"
             >
